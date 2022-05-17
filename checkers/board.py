@@ -17,7 +17,24 @@ class Board:
                 pygame.draw.rect(win, WHITE, (row * SQARE_SIZE, col * SQARE_SIZE, SQARE_SIZE, SQARE_SIZE))
 
     def evaluate(self):
-        return self.white_left - self.red_left + self.white_kings * 0.5 - self.red_kings * 0.5
+        return self.white_left - self.red_left + self.white_kings * 2 - self.red_kings * 2
+
+    def evaluate_by_location(self):
+        white_score = 0
+        red_score = 0
+
+        for piece in self.get_all_pieces(WHITE):
+            white_score += min(
+                EVAL_LOCATION_POINTS_COL.get(str(piece.col)),
+                EVAL_LOCATION_POINTS_ROW.get(str(piece.row))
+            )
+        for piece in self.get_all_pieces(RED):
+            red_score += min(
+                EVAL_LOCATION_POINTS_COL.get(str(piece.col)),
+                EVAL_LOCATION_POINTS_ROW.get(str(piece.row))
+            )
+
+        return white_score - red_score
 
     def get_all_pieces(self, color):
         pieces = []
@@ -86,6 +103,7 @@ class Board:
         right = piece.col + 1
         row = piece.row
 
+        # TODO: King moves
         if piece.color == RED or piece.king:
             moves.update(self._traverse_left(row - 1, max(row - 3, -1), -1, piece.color, left))
             moves.update(self._traverse_right(row - 1, max(row - 3, -1), -1, piece.color, right))

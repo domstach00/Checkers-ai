@@ -4,7 +4,7 @@ from checkers.board import Board
 from checkers.game import Game
 from minimax.algorithm import minimax
 
-FPS = 250
+FPS = 30
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Checkers')
@@ -28,7 +28,7 @@ def main():
         if game.winner() is not None:
             print(game.winner())
 
-        if game.turn == WHITE:
+        if IS_AI and game.turn == WHITE:
             value, new_board = minimax(game.get_board(), AI_WHITE_DEPTH, WHITE, WHITE, RED, game)
             game.ai_move(new_board)
 
