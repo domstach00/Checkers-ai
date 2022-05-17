@@ -5,6 +5,7 @@ from checkers.constants import *
 
 class Game:
     def __init__(self, win):
+        self.board = None
         self.turn = RED
         self.win = win
         self._init()
@@ -63,3 +64,10 @@ class Game:
             self.turn = WHITE
         else:
             self.turn = RED
+
+    def get_board(self):
+        return self.board
+
+    def ai_move(self, board):
+        self.board = board
+        self.change_turn()

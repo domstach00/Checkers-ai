@@ -15,3 +15,7 @@ BLUE = (0, 0, 255)
 GRAY = (128, 128, 128)
 
 CROWN = pygame.transform.scale(pygame.image.load('checkers/assets/crown.png'), (44, 25))
+
+IS_AI_VS_AI: bool = True
+AI_WHITE_DEPTH = 4
+AI_RED_DEPTH = 4
