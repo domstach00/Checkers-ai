@@ -31,6 +31,41 @@ def get_all_moves(board, color, game):
         return moves
 
 
+def minimax_alpha_beta(position, depth, max_player, base_player, oponent, game, alpha, beta):
+    if depth == 0 or position.winner() is not None:
+        if base_player == WHITE:
+            return position.evaluate_by_location(), position
+            # return position.evaluate(), position
+        else:
+            return position.evaluate_by_location(), position
+            # return -position.evaluate(), position
+
+    if max_player:
+        max_eval = float('-inf')
+        best_move = None
+        for move in get_all_moves(position, base_player, game):
+            evaluation = minimax_alpha_beta(move, depth - 1, False, base_player, oponent, game, alpha, beta)[0]
+            max_eval = max(max_eval, evaluation)
+            alpha = max(alpha, evaluation)
+            if max_eval == evaluation:
+                best_move = move
+            if beta <= alpha:
+                break
+        return max_eval, best_move
+    else:
+        min_eval = float('inf')
+        best_move = None
+        for move in get_all_moves(position, oponent, game):
+            evaluation = minimax_alpha_beta(move, depth - 1, base_player, base_player, oponent, game, alpha, beta)[0]
+            min_eval = max(min_eval, evaluation)
+            beta = min(beta, evaluation)
+            if min_eval == evaluation:
+                best_move = move
+            if beta <= alpha:
+                break
+        return min_eval, best_move
+
+
 def minimax(position, depth, max_player, base_player, oponent, game):
     if depth == 0 or position.winner() is not None:
         if base_player == WHITE:
@@ -58,6 +93,7 @@ def minimax(position, depth, max_player, base_player, oponent, game):
             if min_eval == evaluation:
                 best_move = move
         return min_eval, best_move
+
 
 
 def draw_moves(game, board, piece):

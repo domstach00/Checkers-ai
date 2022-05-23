@@ -17,9 +17,12 @@ GRAY = (128, 128, 128)
 CROWN = pygame.transform.scale(pygame.image.load('checkers/assets/crown.png'), (44, 25))
 
 IS_AI: bool = True
-IS_AI_VS_AI: bool = True
+IS_AI_VS_AI: bool = False
 AI_WHITE_DEPTH = 4
-AI_RED_DEPTH = 4
+AI_RED_DEPTH = 10
+IS_RANDOM_FIRST_TURN: bool = True
+IS_ALPHA_BETA_TURN_ON_WHITE: bool = True
+IS_ALPHA_BETA_TURN_ON_RED: bool = True
 
 EVAL_LOCATION_POINTS_COL: dict = {
     "0": 1,
