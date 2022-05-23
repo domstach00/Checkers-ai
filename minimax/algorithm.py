@@ -69,11 +69,10 @@ def minimax_alpha_beta(position, depth, max_player, base_player, oponent, game, 
 def minimax(position, depth, max_player, base_player, oponent, game):
     if depth == 0 or position.winner() is not None:
         if base_player == WHITE:
-            return position.evaluate_by_location(), position
-            # return position.evaluate(), position
+            return position.evaluate(), position
         else:
-            return position.evaluate_by_location(), position
-            # return -position.evaluate(), position
+            return position.evaluate(), position
+
 
     if max_player:
         max_eval = float('-inf')
