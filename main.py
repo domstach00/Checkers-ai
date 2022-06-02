@@ -8,7 +8,7 @@ from checkers.board import Board
 from checkers.game import Game
 from minimax.algorithm import minimax_alpha_beta, minimax
 
-FPS = 60
+FPS = 10
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Checkers')
@@ -51,7 +51,6 @@ def main():
         if game.winner() is not None:
             print(f'White: {game.board.white_left} Red: {game.board.red_left} Winner: {game.winner()}')
             break
-
 
         if IS_AI_VS_AI:
             if game.turn == RED:

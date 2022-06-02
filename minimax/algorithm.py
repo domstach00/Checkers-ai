@@ -34,10 +34,10 @@ def get_all_moves(board, color, game):
 def minimax_alpha_beta(position, depth, max_player, base_player, oponent, game, alpha, beta):
     if depth == 0 or position.winner() is not None:
         if base_player == WHITE:
-            return position.evaluate_by_location(), position
+            return position._evaluate_by_location(), position
             # return position.evaluate(), position
         else:
-            return position.evaluate_by_location(), position
+            return position._evaluate_by_location(), position
             # return -position.evaluate(), position
 
     if max_player:
