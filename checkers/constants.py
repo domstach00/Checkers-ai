@@ -19,14 +19,14 @@ CROWN = pygame.transform.scale(pygame.image.load('checkers/assets/crown.png'), (
 IS_AI: bool = True
 IS_AI_VS_AI: bool = True
 AI_WHITE_DEPTH = 5
-AI_RED_DEPTH = 1
+AI_RED_DEPTH = 3
 IS_RANDOM_FIRST_TURN: bool = False
 IS_ALPHA_BETA_TURN_ON_WHITE: bool = True
 IS_ALPHA_BETA_TURN_ON_RED: bool = False
 
 EVAL_IS_CALC_BY_LOCATION: bool = True
-EVAL_CALC_WHITE: int = 1
-EVAL_CALC_RED: int = 2
+EVAL_CALC_WHITE: int = 2
+EVAL_CALC_RED: int = 1
 
 EVAL_LOCATION_POINTS_COL: dict = {
     "0": 1,

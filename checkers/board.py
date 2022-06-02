@@ -18,16 +18,10 @@ class Board:
                 pygame.draw.rect(win, WHITE, (row * SQARE_SIZE, col * SQARE_SIZE, SQARE_SIZE, SQARE_SIZE))
 
     def evaluate(self, eval_type: int = None):
-        if eval_type is None:
-            if EVAL_IS_CALC_BY_LOCATION:
-                return self._evaluate_by_location()
-            else:
-                return self._evaluate_default() - 10 * self.king_moves_in_row
+        if eval_type == 2:
+            return self._evaluate_by_location()
         else:
-            if eval_type == 2:
-                return self._evaluate_default()
-            else:
-                return self._evaluate_default()
+            return self._evaluate_default()
 
     def _evaluate_default(self):
         return self.white_left - self.red_left + self.white_kings * 2 - self.red_kings * 2
