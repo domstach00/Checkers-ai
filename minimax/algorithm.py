@@ -1,5 +1,6 @@
 from copy import deepcopy
 import pygame
+from checkers.constants import EVAL_CALC_WHITE, EVAL_CALC_RED
 
 RED = (255, 0, 0)
 WHITE = (255, 255, 255)
@@ -34,10 +35,10 @@ def get_all_moves(board, color, game):
 def minimax_alpha_beta(position, depth, max_player, base_player, oponent, game, alpha, beta):
     if depth == 0 or position.winner() is not None:
         if base_player == WHITE:
-            return position._evaluate_by_location(), position
+            return position.evaluate(EVAL_CALC_WHITE), position
             # return position.evaluate(), position
         else:
-            return position._evaluate_by_location(), position
+            return position.evaluate(EVAL_CALC_RED), position
             # return -position.evaluate(), position
 
     if max_player:
@@ -69,9 +70,9 @@ def minimax_alpha_beta(position, depth, max_player, base_player, oponent, game, 
 def minimax(position, depth, max_player, base_player, oponent, game):
     if depth == 0 or position.winner() is not None:
         if base_player == WHITE:
-            return position.evaluate(), position
+            return position.evaluate(EVAL_CALC_WHITE), position
         else:
-            return position.evaluate(), position
+            return position.evaluate(EVAL_CALC_RED), position
 
 
     if max_player:
